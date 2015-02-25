@@ -1,0 +1,85 @@
+{
+    "description" : "Displays important haproxy metrics",
+    "icon" : "icon.png",
+    "command" : "node index.js",
+    "postExtract" : "npm install",
+    "ignore" : "node_modules",
+
+    "metrics" : [
+        "HAPROXY_REQUESTS_QUEUED",
+        "HAPROXY_REQUESTS_QUEUE_LIMIT",
+        "HAPROXY_REQUESTS_HANDLED",
+        "HAPROXY_REQUESTS_ABORTED_BY_CLIENT",
+        "HAPROXY_REQUESTS_ABORTED_BY_SERVER",
+        "HAPROXY_SESSIONS",
+        "HAPROXY_SESSION_LIMIT",
+        "HAPROXY_BYTES_IN",
+        "HAPROXY_BYTES_OUT",
+        "HAPROXY_WARNINGS",
+        "HAPROXY_ERRORS",
+        "HAPROXY_FAILED_HEALTH_CHECKS",
+        "HAPROXY_DOWNTIME_SECONDS",
+        "HAPROXY_1XX_RESPONSES",
+        "HAPROXY_2XX_RESPONSES",
+        "HAPROXY_3XX_RESPONSES",
+        "HAPROXY_4XX_RESPONSES",
+        "HAPROXY_5XX_RESPONSES",
+        "HAPROXY_OTHER_RESPONSES"
+    ],
+
+    "dashboards": [
+        { "name":"haproxy http overview", "layout": "d-w=3&d-h=3&d-pad=5&d-bg=none&d-g-HAPROXY_1XX_RESPONSES=0-2-1-1-t&d-g-HAPROXY_OTHER_RESPONSES=0-2-1-1-b&d-g-HAPROXY_2XX_RESPONSES=1-2-1-1-t&d-g-HAPROXY_3XX_RESPONSES=1-2-1-1-b&d-g-HAPROXY_4XX_RESPONSES=2-2-1-1-t&d-g-HAPROXY_5XX_RESPONSES=2-2-1-1-b&d-g-HAPROXY_SESSION_LIMIT=0-1-1-1&d-g-HAPROXY_SESSIONS=0-0-1-1&d-g-HAPROXY_WARNINGS=1-1-1-1&d-g-HAPROXY_ERRORS=2-1-1-1&d-g-HAPROXY_REQUESTS_HANDLED=1-0-1-1&d-sg-cpu=2-0-1-1" },
+        { "name":"haproxy network overview", "layout": "d-w=3&d-h=3&d-pad=5&d-bg=none&d-sg-cpu=2-0-1-1&d-g-HAPROXY_SESSIONS=2-1-1-1&d-g-HAPROXY_REQUESTS_HANDLED=0-1-1-1&d-g-HAPROXY_REQUESTS_QUEUED=1-1-1-1&d-g-HAPROXY_REQUESTS_QUEUE_LIMIT=1-2-1-1&d-g-HAPROXY_SESSION_LIMIT=2-2-1-1&d-g-HAPROXY_BYTES_IN=0-0-1-1-t&d-g-HAPROXY_BYTES_OUT=0-0-1-1-b&d-sg-ni=1-0-1-1-t&d-sg-no=1-0-1-1-b&d-g-HAPROXY_WARNINGS=0-2-1-1-t&d-g-HAPROXY_ERRORS=0-2-1-1-b" }
+    ],
+
+    "paramSchema" : [
+        {
+            "title" : "Source",
+            "name" : "source",
+            "description" : "The Source to display in the legend for the haproxy data.  It will default to the hostname of the server",
+            "type" : "string"
+        },
+        {
+            "title" : "Socket path",
+            "name" : "socketPath",
+            "description" : "The Haproxy statistics Socket path.  Socket or URL is required",
+            "type" : "string",
+            "default" : "/tmp/haproxy"
+        },
+        {
+            "title" : "Statistics URL",
+            "name" : "url",
+            "description" : "The URL endpoint of where the haproxy statistics are hosted.  Socket or URL is required",
+            "type" : "string",
+            "default" : "http://localhost/stats;csv"
+        },
+        {
+            "title" : "Username",
+            "name" : "username",
+            "description" : "If the endpoint is password protected, what username should graphdat use when calling it.",
+            "type" : "string"
+        },
+        {
+            "title" : "Password",
+            "name" : "password",
+            "description" : "If the endpoint is password protected, what password should graphdat use when calling it.",
+            "type" : "password"
+        },
+        {
+            "title": "Filter",
+            "name": "proxies",
+            "description": "Which Server groups would you like to view",
+            "type" : "array",
+            "items" : {
+                "type" : "string"
+            }
+        },
+        {
+          "title": "Poll Seconds",
+          "name": "pollSeconds",
+          "description": "How often should the plugin poll the Haproxy endpoint",
+          "type" : "string",
+          "default" : 1
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "graphdat-haproxy-plugin",
+  "version": "0.0.1",
+  "private": false,
+  "description": "Haproxy plugin for Graphat",
+  "main": "index.js",
+  "devDependencies": {
+    "luvit-base64": "^0.1.1"
+  },
+  "dependencies": {
+    "graphdat-plugin-tools": "0.0.1",
+    "request": "2.27.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/graphdat/plugin-haproxy"
+  },
+  "keywords": [
+    "graphdat",
+    "plugin",
+    "haproxy"
+  ],
+  "author": "Graphdat <support@graphdat.com>",
+  "license": "Apache v2",
+  "bugs": {
+    "url": "https://github.com/graphdat/plugin-haproxy/issues"
+  },
+  "engine": "node >= 0.8.1"
+}

@@ -1,0 +1,7 @@
+{
+	"url" : "http://localhost/stats",
+	"proxies" : ["stats"],
+	"pollInterval": 1000,
+  "username" : "admin",
+  "password" : "admin"
+}
